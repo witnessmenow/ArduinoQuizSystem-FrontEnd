@@ -1,4 +1,4 @@
-<h1>Setup {{this.roomName}}</h1>
+<h1>Setup {{this.raffleSettings.name}}</h1>
 
 <app-parse-participants></app-parse-participants>
 <ul class="particpants">
@@ -6,3 +6,5 @@
         {{participant.name}} - {{participant.id}}
     </li>
 </ul>
+
+<button (click)="saveRaffle()">Save Raffle</button>

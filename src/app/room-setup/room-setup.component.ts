@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GetRandomParticipantService } from '../services/get-random-participant.service';
 import { Participant } from '../models/participant';
+import { ActivatedRoute } from '../../../node_modules/@angular/router';
+import { RaffleSettings } from '../models/raffle-settings';
 
 @Component({
   selector: 'app-room-setup',
@@ -9,18 +11,26 @@ import { Participant } from '../models/participant';
 })
 export class RoomSetupComponent implements OnInit {
 
-  roomName: string;
+  raffleSettings: RaffleSettings;
   participants: Participant[] = [];
-  constructor(private randomParticipentService: GetRandomParticipantService) { }
+  constructor(private randomParticipentService: GetRandomParticipantService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    this.roomName = localStorage.getItem('room-name');
+    this.raffleSettings = JSON.parse(localStorage.getItem(this.route.snapshot.queryParams['roomName']));
     this.getParticipants();
+
+
   }
 
   getParticipants(): void {
     this.randomParticipentService.getParticipants()
       .subscribe(participants => this.participants = participants);
+  }
+
+  saveRaffle(): void {
+    this.raffleSettings.participants = this.participants;
+    localStorage.setItem(this.raffleSettings.name, JSON.stringify(this.raffleSettings));
   }
 
 }

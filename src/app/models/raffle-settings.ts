@@ -1,6 +1,6 @@
 import { Participant } from "./participant";
 
-export class raffleSettings {
+export class RaffleSettings {
     public name: string;
     public participants?: Array<Participant>;
 }
