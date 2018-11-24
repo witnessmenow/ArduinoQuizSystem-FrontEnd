@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ParseParticipantsComponent } from './parse-participants/parse-participants.component';
 
 import { PapaParseModule } from 'ngx-papaparse';
+import { RaffleGameComponent } from './raffle-game/raffle-game.component';
 import { WinnerDisplayComponent } from './winner-display/winner-display.component';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { WinnerDisplayComponent } from './winner-display/winner-display.componen
     RoomEntryComponent,
     RoomSetupComponent,
     ParseParticipantsComponent,
-    WinnerDisplayComponent
+    RaffleGameComponent,
+    WinnerDisplayComponent,
   ],
   imports: [
     BrowserModule,
