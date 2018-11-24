@@ -1,3 +1,4 @@
 <p>
   <button [disabled]="raffleSettings.participants.length === 0" (click)="pickName()">Pick Name</button>
 </p>
+ <app-winner-display [winner]="raffleSettings.winners[raffleSettings.winners.length - 1]" [currentGif]="currentGif"></app-winner-display> 

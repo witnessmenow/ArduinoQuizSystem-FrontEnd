@@ -3,6 +3,7 @@ import { RaffleSettings } from '../models/raffle-settings';
 import { ActivatedRoute } from '@angular/router';
 import { GetRandomParticipantService } from '../services/get-random-participant.service';
 import { LocalStorageService } from '../services/local-storage.service';
+import { GifLoaderService } from '../services/gif-loader.service';
 
 @Component({
   selector: 'app-raffle-game',
@@ -12,8 +13,10 @@ import { LocalStorageService } from '../services/local-storage.service';
 export class RaffleGameComponent implements OnInit {
 
   raffleSettings: RaffleSettings;
+  currentGif: string;
 
-  constructor(private localStorageService: LocalStorageService, private route: ActivatedRoute, private randomParticipentService: GetRandomParticipantService) { }
+  constructor(private route: ActivatedRoute, private randomParticipentService: GetRandomParticipantService,
+     private gifService: GifLoaderService, private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.raffleSettings = JSON.parse(localStorage.getItem(this.route.snapshot.queryParams['roomName']));
@@ -29,6 +32,7 @@ export class RaffleGameComponent implements OnInit {
         this.raffleSettings.winners.push(winner);
         this.raffleSettings.participants.splice(i, 1);
         this.localStorageService.set(this.raffleSettings);
+        this.currentGif = this.gifService.getRandomGif();
         console.log(this.raffleSettings.participants);
         console.log(winner);
         console.log(this.raffleSettings.winners);

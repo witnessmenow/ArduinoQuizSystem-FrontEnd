@@ -1,5 +1,6 @@
 <div>
-  <div ng-if="winner !== null">
+  <img *ngIf="currentGif !== undefined" [src]="currentGif"/>
+  <div *ngIf="winner !== undefined">
     {{winner.name}} - {{winner.id}}
   </div>
 </div>
