@@ -11,6 +11,7 @@ import { ParseParticipantsComponent } from './parse-participants/parse-participa
 
 import { PapaParseModule } from 'ngx-papaparse';
 import { RaffleGameComponent } from './raffle-game/raffle-game.component';
+import { WinnerDisplayComponent } from './winner-display/winner-display.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RaffleGameComponent } from './raffle-game/raffle-game.component';
     RoomEntryComponent,
     RoomSetupComponent,
     ParseParticipantsComponent,
-    RaffleGameComponent
+    RaffleGameComponent,
+    WinnerDisplayComponent,
   ],
   imports: [
     BrowserModule,
