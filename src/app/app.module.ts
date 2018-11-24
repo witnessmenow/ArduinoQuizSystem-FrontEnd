@@ -15,13 +15,13 @@ import { PapaParseModule } from 'ngx-papaparse';
   declarations: [
     AppComponent,
     RoomEntryComponent,
-    RoomSetupComponent
+    RoomSetupComponent,
     ParseParticipantsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
     PapaParseModule
   ],
   providers: [],

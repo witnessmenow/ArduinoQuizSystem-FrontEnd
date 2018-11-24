@@ -16,7 +16,7 @@ export class ParseParticipantsComponent implements OnInit {
 
   parseCSV(csvString: string): void {
     const config = {};
-    console.log("Result:", this.papa.parse(csvString, config));
+    console.log('Result:', this.papa.parse(csvString, config));
   }
 
 }
