@@ -1,0 +1,6 @@
+<h1>Room Entry</h1>
+<form (ngSubmit)="onSubmit()" #roomEntry="ngForm">
+  <label for="room-entry">Room Entry: </label>
+  <input type="text" id="room-entry" name="room-entry" placeholder="Quiz Name" [(ngModel)]="this.roomName" />
+  <button type="submit">Submit</button>
+</form>
