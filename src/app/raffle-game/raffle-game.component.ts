@@ -27,6 +27,7 @@ export class RaffleGameComponent implements OnInit {
       if(this.raffleSettings.participants[i].id === winner.id){
         this.raffleSettings.winners.push(winner);
         this.raffleSettings.participants.splice(i);
+        localStorage.setItem(this.route.snapshot.queryParams['roomName'], JSON.stringify(this.raffleSettings));
       }
     }
   }
