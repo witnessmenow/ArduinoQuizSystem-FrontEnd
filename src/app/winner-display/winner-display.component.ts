@@ -9,13 +9,8 @@ import { Participant } from '../models/participant';
 export class WinnerDisplayComponent implements OnInit {
 
   @Input()
-  private _winner: Participant;
-  public get winner(): Participant {
-    return this._winner;
-  }
-  public set winner(value: Participant) {
-    this._winner = value;
-  }
+  winner: Participant;
+
   constructor() { }
 
   ngOnInit() {

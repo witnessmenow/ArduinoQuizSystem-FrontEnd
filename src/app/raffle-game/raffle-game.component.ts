@@ -20,11 +20,10 @@ export class RaffleGameComponent implements OnInit {
     this.randomParticipentService.setParticipantArray(this.raffleSettings.participants);
   }
 
-  pickName() : void {
+  pickName(): void {
     const winner = this.randomParticipentService.getRandomParticipant();
-    alert(winner.name);
-    for(let i = 0; i < this.raffleSettings.participants.length; i++){
-      if(this.raffleSettings.participants[i].id === winner.id){
+    for (let i = 0; i < this.raffleSettings.participants.length; i++) {
+      if (this.raffleSettings.participants[i].id === winner.id) {
         this.raffleSettings.winners.push(winner);
         this.raffleSettings.participants.splice(i);
         localStorage.setItem(this.route.snapshot.queryParams['roomName'], JSON.stringify(this.raffleSettings));

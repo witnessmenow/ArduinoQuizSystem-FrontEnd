@@ -1,5 +1,5 @@
 <div>
-  <div ng-if="winner !== null">
+  <div *ngIf="winner !== undefined">
     {{winner.name}} - {{winner.id}}
   </div>
 </div>
