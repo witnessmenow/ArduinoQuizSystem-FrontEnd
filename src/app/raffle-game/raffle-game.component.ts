@@ -16,7 +16,7 @@ export class RaffleGameComponent implements OnInit {
   currentGif: string;
 
   constructor(private route: ActivatedRoute, private randomParticipentService: GetRandomParticipantService,
-     private gifService: GifLoaderService, private localStorageService: LocalStorageService) { }
+    private gifService: GifLoaderService, private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.raffleSettings = JSON.parse(localStorage.getItem(this.route.snapshot.queryParams['roomName']));
@@ -24,20 +24,17 @@ export class RaffleGameComponent implements OnInit {
     this.randomParticipentService.setParticipantArray(this.raffleSettings.participants);
   }
 
-  pickName() : void {
+  pickName(): void {
     const winner = this.randomParticipentService.getRandomParticipant(this.raffleSettings.participants);
     alert(winner.name);
-    for(let i = 0; i < this.raffleSettings.participants.length; i++){
-      if(this.raffleSettings.participants[i].id === winner.id){
+    for (let i = 0; i < this.raffleSettings.participants.length; i++) {
+      if (this.raffleSettings.participants[i].id === winner.id) {
         this.raffleSettings.winners.push(winner);
         this.raffleSettings.participants.splice(i, 1);
         this.localStorageService.set(this.raffleSettings);
         this.currentGif = this.gifService.getRandomGif();
-        console.log(this.raffleSettings.participants);
-        console.log(winner);
-        console.log(this.raffleSettings.winners);
       }
     }
-  }
 
+  }
 }
