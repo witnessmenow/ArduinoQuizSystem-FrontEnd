@@ -1,3 +1,8 @@
 <h1>Setup {{this.roomName}}</h1>
 
 <app-parse-participants></app-parse-participants>
+<ul class="particpants">
+    <li *ngFor="let participant of participants">
+        {{participant.name}} - {{participant.id}}
+    </li>
+</ul>
