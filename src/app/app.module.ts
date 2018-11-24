@@ -7,17 +7,22 @@ import { RoomEntryComponent } from './room-entry/room-entry.component';
 import { RoomSetupComponent } from './room-setup/room-setup.component';
 import { FormsModule } from '@angular/forms';
 
+import { ParseParticipantsComponent } from './parse-participants/parse-participants.component';
+
+import { PapaParseModule } from 'ngx-papaparse';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoomEntryComponent,
     RoomSetupComponent
+    ParseParticipantsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
+    PapaParseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
