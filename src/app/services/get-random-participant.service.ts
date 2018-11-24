@@ -11,8 +11,8 @@ export class GetRandomParticipantService {
 
   participants: Participant[] = [];
 
-  getRandomParticipant(): Participant {
-    return this.participants[this.randomInt(0, this.participants.length - 1)];
+  getRandomParticipant(participants: Participant[]): Participant {
+    return participants[this.randomInt(0, participants.length - 1)];
   }
 
   randomInt(min, max) {

@@ -3,6 +3,7 @@ import { GetRandomParticipantService } from '../services/get-random-participant.
 import { Participant } from '../models/participant';
 import { ActivatedRoute, NavigationExtras, Router } from '../../../node_modules/@angular/router';
 import { RaffleSettings } from '../models/raffle-settings';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-room-setup',
@@ -13,11 +14,11 @@ export class RoomSetupComponent implements OnInit {
 
   raffleSettings: RaffleSettings;
   participants: Participant[] = [];
-  constructor(private randomParticipentService: GetRandomParticipantService, private route: ActivatedRoute, private router: Router) {
+  constructor(private localStorageService: LocalStorageService, private randomParticipentService: GetRandomParticipantService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
-    this.raffleSettings = JSON.parse(localStorage.getItem(this.route.snapshot.queryParams['roomName']));
+    this.raffleSettings = this.localStorageService.get(this.route.snapshot.queryParams['roomName']);
     this.getParticipants();
 
 
@@ -30,7 +31,7 @@ export class RoomSetupComponent implements OnInit {
 
   saveRaffle(): void {
     this.raffleSettings.participants = this.participants;
-    localStorage.setItem(this.raffleSettings.name, JSON.stringify(this.raffleSettings));
+    this.localStorageService.set(this.raffleSettings);
     let navigationExtras: NavigationExtras = {
       queryParams: { 'roomName': this.raffleSettings.name },
     };

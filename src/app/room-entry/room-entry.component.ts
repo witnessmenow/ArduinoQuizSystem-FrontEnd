@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { RouterInitializer } from '@angular/router/src/router_module';
 import { RaffleSettings } from '../models/raffle-settings';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-room-entry',
@@ -12,7 +13,7 @@ export class RoomEntryComponent implements OnInit {
 
   roomName: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
   }
@@ -21,7 +22,7 @@ export class RoomEntryComponent implements OnInit {
     const raffleSettings: RaffleSettings = {
       name: this.roomName
     };
-    localStorage.setItem(this.roomName, JSON.stringify(raffleSettings));
+    this.localStorageService.set(raffleSettings);
     let navigationExtras: NavigationExtras = {
       queryParams: { 'roomName': this.roomName },
     };
