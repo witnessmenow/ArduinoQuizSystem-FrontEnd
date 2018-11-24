@@ -13,7 +13,8 @@ export class GifLoaderService {
 
   resetGifs(): void {
     for (let i = 1; i < 30; i++) {
-      this.availableGifs.push('winner' + i);
+      const gifSrc = '/assets/gifs/winner' + i + '.gif';
+      this.availableGifs.push(gifSrc);
     }
   }
 

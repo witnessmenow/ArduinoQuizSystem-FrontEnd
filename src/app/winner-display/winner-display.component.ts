@@ -11,6 +11,9 @@ export class WinnerDisplayComponent implements OnInit {
   @Input()
   winner: Participant;
 
+  @Input()
+  currentGif: string;
+
   constructor() { }
 
   ngOnInit() {
